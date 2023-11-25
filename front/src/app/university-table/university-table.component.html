@@ -1,5 +1,4 @@
 <!-- university-table.component.html -->
-<header></header>
 <section class="section" style="margin-left: 2%; margin-right: 2%;">
 <div class="row">
     <div class="col-log-6">
@@ -18,15 +17,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let university of universities">
-                        <td>{{ university.idUniversite }}</td>
+                        <tr *ngFor="let university of universities; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
                         <td>{{ university.nomUniversite }}</td>
                         <td>{{ university.adresseUniversite }}</td>
                         <!-- Add more columns as needed -->
                         <td>
                             <!-- Add action buttons (e.g., edit, delete) -->
-                            <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-primary" >Edit</button>
+                            <button class="btn btn-danger" (click)="deleteUniversity(university.idUniversite)">Delete</button>
                         </td>
                         </tr>
                     </tbody>
@@ -37,4 +36,3 @@
     </div>
 </div>
 </section>
-<footer></footer>

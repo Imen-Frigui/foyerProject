@@ -33,7 +33,7 @@ public class UniversiteController {
         return  universiteServiceImp.findById(IdU);
     }
     @DeleteMapping("/delete/{IdU}")
-    public void deleteUniversiteById(@PathVariable long Idu){
-        universiteServiceImp.deleteUniversite(Idu);
+    public void deleteUniversiteById(@PathVariable long IdU){
+        universiteServiceImp.deleteUniversite(IdU);
     }
 }

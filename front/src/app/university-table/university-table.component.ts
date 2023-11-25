@@ -26,5 +26,11 @@ export class UniversityTableComponent {
       }
     );
   }
+  deleteUniversity(id: number): void {
+    this.universiteService.deleteUniversity(id).subscribe(() => {
+      // Reload universities after deletion
+      this.loadUniversities();
+    });
+  }
 
 }

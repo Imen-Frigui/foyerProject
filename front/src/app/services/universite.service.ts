@@ -15,6 +15,10 @@ export class UniversiteService {
   getAllUniversities(): Observable<Universite[]> {
     return this.htpp.get<Universite[]>(`${this.baseUrl}/get`);
   }
+  deleteUniversity(id: number): Observable<void> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.htpp.delete<void>(url);
+  }
 
 
 }
