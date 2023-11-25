@@ -1,0 +1,8 @@
+#list{
+    position: relative!important; 
+    margin-bottom: 100px!important;
+}
+.portfolio-wrap {
+    position: relative!important;
+    z-index: 1!important;
+  }
