@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UniversiteComponent } from './universite/universite.component';
+import { UniversityTableComponent } from './university-table/university-table.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { UniversiteComponent } from './universite/universite.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    UniversiteComponent
+    UniversiteComponent,
+    UniversityTableComponent,
   ],
   imports: [
     BrowserModule,
