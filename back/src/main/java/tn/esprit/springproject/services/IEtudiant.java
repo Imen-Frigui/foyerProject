@@ -13,6 +13,6 @@ public interface IEtudiant {
     public void deleteEtudiant (long id);
     public Etudiant findEtudiantByNom(String nom);
     public List<Etudiant> findetudiantsStartsWith();
-    List<Etudiant> findByReservationList_EstValideTrue();
-    List<Etudiant> findAllByUniversity(String universityName);
+    public List<Etudiant> findByReservationList_EstValideTrue();
+    public List<Etudiant> findAllByUniversity(String universityName);
 }
