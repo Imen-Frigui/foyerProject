@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Etudiant;
-import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.services.EtudiantServiceImp;
 import tn.esprit.springproject.services.IEtudiant;
 
