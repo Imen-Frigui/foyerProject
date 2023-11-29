@@ -47,4 +47,15 @@ public class EtudiantServiceImp implements IEtudiant{
         String nom = "AB";
         return etudiantRepository.findEtudiantByNomEtStartingWith(nom);
     }
+
+    @Override
+    public List<Etudiant> findByReservationList_EstValideTrue(){
+        return etudiantRepository.findByReservationList_EstValideTrue();
+    }
+
+    @Override
+    public List<Etudiant> findAllByUniversity(String universityName) {
+        return etudiantRepository.findAllByUniversity(universityName);
+    }
+
 }

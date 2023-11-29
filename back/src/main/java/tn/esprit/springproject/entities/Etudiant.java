@@ -1,6 +1,7 @@
 package tn.esprit.springproject.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,13 +20,12 @@ public class Etudiant implements Serializable {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long idEtudiant;
     private String nomEt;
-    private String prenomET;
+    private String prenomEt;
     private long cin;
     private String ecole;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
-    private boolean estValide;
-    @ManyToMany(mappedBy = "etudiantList")
+    @ManyToMany(mappedBy = "etudiantList",cascade = CascadeType.ALL)
     @JsonBackReference
     private List <Reservation> reservationList;
 }
