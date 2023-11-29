@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IEtudiant {
     public Etudiant addEtudiant(Etudiant E);
-    public Etudiant updateEtudaint(Etudiant E);
+    public Etudiant updateEtudiant(Etudiant E);
     public List<Etudiant> getAllEtudiants();
     public Etudiant getById(long id);
     public void deleteEtudiant (long id);

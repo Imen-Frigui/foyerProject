@@ -18,7 +18,7 @@ public class EtudiantServiceImp implements IEtudiant{
     }
 
     @Override
-    public Etudiant updateEtudaint(Etudiant E) {
+    public Etudiant updateEtudiant(Etudiant E) {
         return etudiantRepository.save(E);
     }
 

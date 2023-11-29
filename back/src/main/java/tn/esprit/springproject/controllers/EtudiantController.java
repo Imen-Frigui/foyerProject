@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Etudiant;
 import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.services.EtudiantServiceImp;
+import tn.esprit.springproject.services.IEtudiant;
 
 import java.util.List;
 
@@ -14,39 +15,30 @@ import java.util.List;
 @RequestMapping("/etudiant")
 @Tag(name = "etudiant API")
 public class EtudiantController {
-    public EtudiantServiceImp etudiantServiceImp;
+    public IEtudiant iEtudiant;
 
     @PostMapping("/addEd")
     public Etudiant addEtudiant(@RequestBody Etudiant e){
-        return etudiantServiceImp.addEtudiant(e);
+        return iEtudiant.addEtudiant(e);
     }
 
-    @PutMapping("/editEd/{id}")
-    public Etudiant updateEtudiant(@RequestBody Etudiant e, @PathVariable long id){
-        Etudiant etudiant = etudiantServiceImp.getById(id);
-        System.out.println(etudiant.toString());
-        etudiant.setCin(etudiant.getCin());
-        etudiant.setNomEt(etudiant.getNomEt());
-        etudiant.setPrenomET(etudiant.getPrenomET());
-        etudiant.setEcole(etudiant.getEcole());
-        etudiant.setDateNaissance(etudiant.getDateNaissance());
-        etudiant.setReservationList(etudiant.getReservationList());
-
-        return etudiant;
+    @PutMapping("/editEd")
+    public Etudiant updateEtudiant(@RequestBody Etudiant e){
+        return iEtudiant.updateEtudiant(e);
     }
 
     @GetMapping("/getEd")
     public List<Etudiant> findAllEtudaint(){
-        return etudiantServiceImp.getAllEtudiants();
+        return iEtudiant.getAllEtudiants();
     }
 
     @GetMapping("/getEd/{IdE}")
     public Etudiant findEtudiantById(@PathVariable long IdE){
-        return  etudiantServiceImp.getById(IdE);
+        return  iEtudiant.getById(IdE);
     }
 
     @DeleteMapping("/delete/{IdE}")
     public void deleteEtudiantById(@PathVariable long IdE){
-        etudiantServiceImp.deleteEtudiant(IdE);
+        iEtudiant.deleteEtudiant(IdE);
     }
 }
