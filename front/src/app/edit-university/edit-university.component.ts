@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Universite } from '../models/universite.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UniversiteService } from '../services/universite.service';
+import { Foyer } from '../models/foyer.model';
 
 @Component({
   selector: 'app-edit-university',
@@ -21,6 +22,7 @@ export class EditUniversityComponent {
       universite: null as any  // or provide a valid initial value
     }
   };
+  foysers: Foyer[] = [];
   
 
   constructor(
@@ -40,7 +42,19 @@ export class EditUniversityComponent {
         }
       );
     });
+    this.universiteService.getAllFoyers().subscribe(
+      data => {
+        this.foysers = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
+
+
+
+
 
   updateUniversity(): void {
     this.universiteService.updateUniversity(this.university).subscribe(

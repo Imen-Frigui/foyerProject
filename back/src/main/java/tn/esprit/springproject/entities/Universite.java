@@ -1,6 +1,8 @@
 package tn.esprit.springproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,7 @@ public class Universite implements Serializable {
     private long idUniversite;
     private String nomUniversite;
     private String adresseUniversite;
+    @JsonManagedReference
     @OneToOne
-    @JsonIgnore
     private Foyer foyer;
 }

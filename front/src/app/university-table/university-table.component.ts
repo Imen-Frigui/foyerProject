@@ -21,6 +21,7 @@ export class UniversityTableComponent {
     this.universiteService.getAllUniversities().subscribe(
       data => {
         this.universities = data;
+        console.log('Universities:', this.universities);
       },
       error => {
         console.log(error);

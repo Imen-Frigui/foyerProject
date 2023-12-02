@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.entities.Universite;
+import tn.esprit.springproject.services.FoyerServiceImp;
 import tn.esprit.springproject.services.UniversiteServiceImp;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class UniversiteController {
 
     public UniversiteServiceImp universiteServiceImp;
+    public FoyerServiceImp foyerServiceImp;
     @PostMapping("/add")
     public Universite addUniversite(@RequestBody Universite u){
         return universiteServiceImp.addUniversite(u);
@@ -30,7 +32,10 @@ public class UniversiteController {
     }
     @GetMapping("/get/{IdU}")
     public Universite findUniversiteById(@PathVariable long IdU){
-        return  universiteServiceImp.findById(IdU);
+        Universite universite = universiteServiceImp.findById(IdU);
+        Foyer foyer = foyerServiceImp.findById(universite.getFoyer().getIdFoyer());
+        universite.setFoyer(foyer);
+        return  universite;
     }
     @DeleteMapping("/delete/{IdU}")
     public void deleteUniversiteById(@PathVariable long IdU){

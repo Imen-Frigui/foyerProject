@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import{ HttpClient } from '@angular/common/http';
 import { Observable  } from 'rxjs';
 import { Universite } from '../models/universite.model';
+import { Foyer } from '../models/foyer.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UniversiteService {
   private baseUrl = 'http://localhost:8089/foyerProject/universite'
+  private baseUrl2 = 'http://localhost:8089/foyerProject/foyer'
+
 
   constructor(private htpp: HttpClient) { }
 
@@ -26,6 +29,10 @@ export class UniversiteService {
   getUniversityById(id: number): Observable<Universite> {
     const url = `${this.baseUrl}/get/${id}`;
     return this.htpp.get<Universite>(url);
+  }
+  getAllFoyers(): Observable<Foyer[]> {
+    const url = `${this.baseUrl2}/get`;
+    return this.htpp.get<Foyer[]>(url);
   }
 
 
