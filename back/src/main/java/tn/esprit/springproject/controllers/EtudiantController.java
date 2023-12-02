@@ -1,11 +1,12 @@
 package tn.esprit.springproject.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.springproject.entities.Etudiant;
-import tn.esprit.springproject.services.EtudiantServiceImp;
-import tn.esprit.springproject.services.IEtudiant;
+import tn.esprit.springproject.entities.User;
+import tn.esprit.springproject.services.UserServiceImp;
+import tn.esprit.springproject.services.IUser;
 
 import java.util.List;
 
@@ -14,41 +15,41 @@ import java.util.List;
 @RequestMapping("/etudiant")
 @Tag(name = "etudiant API")
 public class EtudiantController {
-    public IEtudiant iEtudiant;
-    public EtudiantServiceImp etudiantServiceImp;
+    public IUser iUser;
+    public UserServiceImp etudiantServiceImp;
 
 
     @PostMapping("/addEt")
-    public Etudiant addEtudiant(@RequestBody Etudiant e){
-        return iEtudiant.addEtudiant(e);
+    public User addEtudiant(@RequestBody User e){
+        return iUser.addUser(e);
     }
 
     @PutMapping("/editEt")
-    public Etudiant updateEtudiant(@RequestBody Etudiant e){
-        return iEtudiant.updateEtudiant(e);
+    public User updateUser(@RequestBody User e){
+        return iUser.updateUser(e);
     }
 
     @GetMapping("/getEt")
-    public List<Etudiant> findAllEtudaint(){
-        return iEtudiant.getAllEtudiants();
+    public List<User> findAllUsers(){
+        return iUser.getAllUsers();
     }
 
     @GetMapping("/getEt/{IdE}")
-    public Etudiant findEtudiantById(@PathVariable long IdE){
-        return  iEtudiant.getById(IdE);
+    public User findUserById(@PathVariable long IdE){
+        return  iUser.getById(IdE);
     }
 
     @DeleteMapping("/deleteEt/{IdE}")
-    public void deleteEtudiantById(@PathVariable long IdE){
-        iEtudiant.deleteEtudiant(IdE);
+    public void deleteUserById(@PathVariable long IdE){
+        iUser.deleteUser(IdE);
     }
 
     @GetMapping("/etByValidReservation")
-    public List<Etudiant> findByReservationList_EstValideTrue(){
-        return  iEtudiant.findByReservationList_EstValideTrue();
+    public List<User> findByReservationList_EstValideTrue(){
+        return  iUser.findByReservationList_EstValideTrue();
     }
     @GetMapping("/etByUniversity/{name}")
-    public List<Etudiant> findAllByUniversity(@PathVariable String name){
-        return iEtudiant.findAllByUniversity(name);
+    public List<User> findAllByUniversity(@PathVariable String name){
+        return iUser.findAllByUniversity(name);
     }
 }

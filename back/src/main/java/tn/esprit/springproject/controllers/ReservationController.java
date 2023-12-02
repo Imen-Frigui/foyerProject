@@ -3,13 +3,11 @@ package tn.esprit.springproject.controllers;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.springproject.entities.Etudiant;
-import tn.esprit.springproject.entities.Foyer;
+import tn.esprit.springproject.entities.User;
 import tn.esprit.springproject.entities.Reservation;
-import tn.esprit.springproject.services.EtudiantServiceImp;
+import tn.esprit.springproject.services.UserServiceImp;
 import tn.esprit.springproject.services.ReservationServiceImp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,7 +16,7 @@ import java.util.List;
 @Tag(name = "reservation API")
 public class ReservationController {
     public ReservationServiceImp reservationServiceImp;
-    public EtudiantServiceImp etudiantServiceImp;
+    public UserServiceImp etudiantServiceImp;
 
     @PostMapping("/add")
     public Reservation addReservation(@RequestBody Reservation r){ return reservationServiceImp.addReservation(r); }
@@ -39,15 +37,15 @@ public class ReservationController {
         reservationServiceImp.deleteReservation(IdR);
     }
     @GetMapping("/getReservationByetudiant/{id}")
-    public List<Reservation> findReservationByEtudiant(@PathVariable long id){
-        Etudiant etudiant = etudiantServiceImp.getById(id);
-        return reservationServiceImp.findReservationsByEtudiantListContains(etudiant);
+    public List<Reservation> findReservationBy(@PathVariable long id){
+        User user = etudiantServiceImp.getById(id);
+        return reservationServiceImp.findReservationsByEtudiantListContains(user);
 
     }
     @GetMapping("/getReservationByEtudiantNom/{nom}")
     public List<Reservation> findReservationByEtudiantNom(@PathVariable String nom){
-        Etudiant etudiant = etudiantServiceImp.findEtudiantByNom(nom);
-        return reservationServiceImp.findReservationsByEtudiantListContains(etudiant);
+        User user = etudiantServiceImp.findUserByNom(nom);
+        return reservationServiceImp.findReservationsByEtudiantListContains(user);
 
     }
     @GetMapping("/getReservationByEtudiantAB")
