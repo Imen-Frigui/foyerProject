@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UniversiteService } from '../services/universite.service';
 import { Universite } from '../models/universite.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-university-table',
@@ -10,7 +11,7 @@ import { Universite } from '../models/universite.model';
 export class UniversityTableComponent {
   universities: Universite[] = [];
 
-  constructor(private universiteService: UniversiteService) { }
+  constructor(private universiteService: UniversiteService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUniversities();
@@ -31,6 +32,9 @@ export class UniversityTableComponent {
       // Reload universities after deletion
       this.loadUniversities();
     });
+  }
+  editUniversity(id: number): void {
+    this.router.navigate(['admin/edit-university', id]);
   }
 
 }

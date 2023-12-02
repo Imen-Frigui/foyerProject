@@ -19,6 +19,14 @@ export class UniversiteService {
     const url = `${this.baseUrl}/delete/${id}`;
     return this.htpp.delete<void>(url);
   }
+  updateUniversity(university: Universite): Observable<Universite> {
+    const url = `${this.baseUrl}/edit`;
+    return this.htpp.put<Universite>(url, university);
+  }
+  getUniversityById(id: number): Observable<Universite> {
+    const url = `${this.baseUrl}/get/${id}`;
+    return this.htpp.get<Universite>(url);
+  }
 
 
 }
