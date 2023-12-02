@@ -46,40 +46,18 @@ export class AddUniversityFormComponent {
       const newUniversite = this.newUniversiteForm.value;
       console.log('Form value:', newUniversite);
   
-      // If you want to assign a foyer, call the appropriate method
-      if (this.assignFoyer) {
-        const selectedFoyer: Foyer = this.newUniversiteForm.get('foyer')!.value;
-        const yourFoyerId: number = selectedFoyer.idFoyer;
-  
-        // Set the selected foyer in the newUniversite object
-        newUniversite.foyer = selectedFoyer;
-  
-        // Call the method that assigns a foyer
-        this.universiteService.addUniversityAndAssignToFoyer(newUniversite, yourFoyerId).subscribe(
-          addedUniversity => {
-            console.log('University added successfully:', addedUniversity);
-            this.router.navigate(['/admin/university-table']);
-          },
-          error => {
-            console.error('Error adding university:', error);
-          }
-        );
-      } else {
-        // Call the method that adds a university without assigning a foyer
-        this.universiteService.addUniversity(newUniversite).subscribe(
-          addedUniversity => {
-            console.log('University added successfully:', addedUniversity);
-            this.router.navigate(['/admin/university-table']);
-          },
-          error => {
-            console.error('Error adding university:', error);
-          }
-        );
-      }
+      this.universiteService.addUniversity(newUniversite).subscribe(
+        addedUniversity => {
+          console.log('University added successfully:', addedUniversity);
+          this.router.navigate(['/admin/university-table']);
+        },
+        error => {
+          console.error('Error adding university:', error);
+        }
+      );
     } else {
       console.error('Error adding university: Form is invalid');
     }
-  }
   
-  
+  } 
 }

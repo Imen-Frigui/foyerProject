@@ -45,9 +45,7 @@ public class UniversiteServiceImp implements IUniversite{
     }
 
     public Universite addUniversityAndAssignToFoyer(Universite universite, Foyer foyer) {
-        // Assign the Foyer to the Universite
         universite.setFoyer(foyer);
-        // Save the Universite with the assigned Foyer
         return universiteRepository.save(universite);
     }
 }
