@@ -2,7 +2,9 @@ package tn.esprit.springproject.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.entities.Universite;
+import tn.esprit.springproject.repositories.FoyerRepository;
 import tn.esprit.springproject.repositories.UniversiteRepository;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UniversiteServiceImp implements IUniversite{
     public UniversiteRepository universiteRepository;
+    public FoyerRepository foyerRepository;
     @Override
     public Universite addUniversite(Universite u) {
         return universiteRepository.save(u);
@@ -39,5 +42,12 @@ public class UniversiteServiceImp implements IUniversite{
     @Override
     public Universite getByNomUniversite(String nomU) {
         return null;
+    }
+
+    public Universite addUniversityAndAssignToFoyer(Universite universite, Foyer foyer) {
+        // Assign the Foyer to the Universite
+        universite.setFoyer(foyer);
+        // Save the Universite with the assigned Foyer
+        return universiteRepository.save(universite);
     }
 }

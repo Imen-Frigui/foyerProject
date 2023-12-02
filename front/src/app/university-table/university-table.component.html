@@ -1,37 +1,37 @@
-<!-- university-table.component.html -->
 <section class="section" style="margin-left: 2%; margin-right: 2%;">
-<div class="row">
-    <div class="col-log-6">
+    <div class="row">
+      <div class="col-log-6">
         <div class="card">
-            <div class="card-body">
-            <h5 class="card-title">University Table</h5>
-                <div class="table-responsive">
-                    <table class="table">
-                    <thead>
-                        <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Foyer</th>
-                        <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let university of universities; let i = index">
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ university.nomUniversite }}</td>
-                        <td>{{ university.adresseUniversite }}</td>
-                        <td>{{ university.foyer?.nomFoyer || 'N/A' }}</td>
-                        <td>
-                            <button class="btn btn-primary" (click)="editUniversity(university.idUniversite)">Edit</button>
-                            <button class="btn btn-danger" (click)="deleteUniversity(university.idUniversite)">Delete</button>
-                        </td>
-                        </tr>
-                    </tbody>
-                    </table>
-                </div>
+          <div class="card-body ">
+                <h5 class="card-title">University Table</h5>        
+                <button class="btn btn-success mb-3" (click)="addNewUniversity()">Add New University</button> 
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Foyer</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let university of universities; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ university.nomUniversite }}</td>
+                    <td>{{ university.adresseUniversite }}</td>
+                    <td>{{ university.foyer?.nomFoyer || 'N/A' }}</td>
+                    <td>
+                      <button class="btn btn-primary" (click)="editUniversity(university.idUniversite)">Edit</button>
+                      <button class="btn btn-danger" (click)="deleteUniversity(university.idUniversite)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</section>
+  </section>

@@ -34,6 +34,15 @@ export class UniversiteService {
     const url = `${this.baseUrl2}/get`;
     return this.htpp.get<Foyer[]>(url);
   }
+  addUniversity(universite: Universite): Observable<Universite> {
+    return this.htpp.post<Universite>(`${this.baseUrl}/add`, universite);
+  }
+  addUniversityAndAssignToFoyer(universite: Universite, foyerId: number): Observable<Universite> {
+    const requestBody = {
+      universite,
+      foyerId
+    };
 
+    return this.htpp.post<Universite>(`${this.baseUrl}/addUniversityAndAssignToFoyer/${foyerId}`, requestBody);  }
 
 }

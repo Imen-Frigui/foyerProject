@@ -11,7 +11,9 @@ import { HeaderComponent } from './header/header.component';
 import { UniversiteComponent } from './universite/universite.component';
 import { UniversityTableComponent } from './university-table/university-table.component';
 import { EditUniversityComponent } from './edit-university/edit-university.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUniversityFormComponent } from './add-university-form/add-university-form.component';
+
 
 
 @NgModule({
@@ -24,12 +26,14 @@ import { FormsModule } from '@angular/forms';
     UniversiteComponent,
     UniversityTableComponent,
     EditUniversityComponent,
+    AddUniversityFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

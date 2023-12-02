@@ -3,7 +3,6 @@
       <div class="card-body">
         <h5 class="card-title">Edit University</h5>
         <form (ngSubmit)="updateUniversity()" #universityForm="ngForm">
-          <!-- Add form fields for editing university details -->
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" [(ngModel)]="university.nomUniversite" name="name" class="form-control">
@@ -14,15 +13,14 @@
           </div>
           <div class="form-group">
             <label for="foyer">Foyer:</label>
-            <select id="foyer" [(ngModel)]="university.foyer" name="foyer" class="form-control" required>
+            <select id="foyer" [(ngModel)]="university.foyer" name="foyer" class="form-control">
               <option *ngFor="let foyer of foysers" [ngValue]="foyer">{{ foyer.nomFoyer }}</option>
             </select>
-          </div>
-          <!-- Add more fields as needed -->
-  
+          </div>  
           <button type="submit" class="btn btn-primary" [disabled]="universityForm.invalid">Save Changes</button>
         </form>
       </div>
     </div>
   </section>
+  
   

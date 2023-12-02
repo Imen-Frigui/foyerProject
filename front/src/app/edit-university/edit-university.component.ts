@@ -19,7 +19,7 @@ export class EditUniversityComponent {
       idFoyer: 0,
       nomFoyer: '',
       capacityFoyer: 0,
-      universite: null as any  // or provide a valid initial value
+      universite: null as any  
     }
   };
   foysers: Foyer[] = [];
@@ -59,15 +59,11 @@ export class EditUniversityComponent {
   updateUniversity(): void {
     this.universiteService.updateUniversity(this.university).subscribe(
       data => {
-        // Handle success, e.g., show a success message or navigate to the university list page
         console.log('University updated successfully!');
-        
-        // Navigate back to the university table page
         this.router.navigate(['/admin/university-table']);
       },
       error => {
         console.log(error);
-        // Handle error, e.g., show an error message
       }
     );
   }

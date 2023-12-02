@@ -4,6 +4,7 @@ import { UniversiteListComponent } from './universite-list/universite-list.compo
 import { HomeComponent } from './home/home.component';
 import { UniversityTableComponent } from './university-table/university-table.component';
 import { EditUniversityComponent } from './edit-university/edit-university.component';
+import { AddUniversityFormComponent } from './add-university-form/add-university-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'admin',
     children: [
       { path: 'university-table', component: UniversityTableComponent },
-      { path: 'edit-university/:id', component: EditUniversityComponent }
+      { path: 'edit-university/:id', component: EditUniversityComponent },
+      { path: 'add-university', component: AddUniversityFormComponent },
     ]
   }
 ];

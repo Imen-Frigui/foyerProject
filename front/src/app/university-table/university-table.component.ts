@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class UniversityTableComponent {
   universities: Universite[] = [];
 
-  constructor(private universiteService: UniversiteService, private router: Router) { }
+  constructor(private universiteService: UniversiteService, private router: Router) {  }
 
   ngOnInit(): void {
     this.loadUniversities();
@@ -37,5 +37,7 @@ export class UniversityTableComponent {
   editUniversity(id: number): void {
     this.router.navigate(['admin/edit-university', id]);
   }
-
+  addNewUniversity(): void {
+    this.router.navigate(['/admin/add-university']);
+  }
 }

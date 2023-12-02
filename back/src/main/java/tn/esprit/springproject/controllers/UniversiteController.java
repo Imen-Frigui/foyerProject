@@ -41,4 +41,10 @@ public class UniversiteController {
     public void deleteUniversiteById(@PathVariable long IdU){
         universiteServiceImp.deleteUniversite(IdU);
     }
+
+    @PostMapping("/addUniversityAndAssignToFoyer/{foyerId}")
+    public Universite addUniversityAndAssignToFoyer(@RequestBody Universite universite, @PathVariable long foyerId) {
+        Foyer foyer = foyerServiceImp.findById(foyerId);
+        return universiteServiceImp.addUniversityAndAssignToFoyer(universite, foyer);
+    }
 }
