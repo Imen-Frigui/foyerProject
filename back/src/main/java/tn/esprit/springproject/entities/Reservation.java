@@ -22,7 +22,8 @@ public class Reservation implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date anneUniversitaire;
-    private boolean estValide;
+    @Enumerated(EnumType.STRING)
+    private StateReservation state;
     @ManyToMany()
     private List<Etudiant> etudiantList;
 

@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @ToString
 public class Etudiant implements Serializable {
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long idEtudiant;

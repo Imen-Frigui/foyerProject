@@ -1,31 +1,33 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { UniversiteListComponent } from './universite-list/universite-list.component';
-import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { UniversiteComponent } from './universite/universite.component';
-import { UniversityTableComponent } from './university-table/university-table.component';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    ComponentsModule,
+    NgbModule,
+    RouterModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
-    UniversiteListComponent,
-    HomeComponent,
-    FooterComponent,
-    HeaderComponent,
-    UniversiteComponent,
-    UniversityTableComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    AdminLayoutComponent,
+    AuthLayoutComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
