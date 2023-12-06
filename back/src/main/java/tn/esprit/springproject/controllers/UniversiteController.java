@@ -53,4 +53,19 @@ public class UniversiteController {
     public List<Foyer> getFoyersNotAssignedToUniversity() {
         return universiteServiceImp.findFoyersNotAssignedToUniversity();
     }
+
+    @GetMapping("/searchByName")
+    public List<Universite> searchByName(@RequestParam String searchTerm) {
+        return universiteServiceImp.searchByName(searchTerm);
+    }
+
+    @GetMapping("/searchByAddress")
+    public List<Universite> searchByAddress(@RequestParam String searchTerm) {
+        return universiteServiceImp.searchByAddress(searchTerm);
+    }
+
+    @GetMapping("/searchByFoyer")
+    public List<Universite> searchByFoyer(@RequestParam long searchTerm) {
+        return universiteServiceImp.searchByFoyer(searchTerm);
+    }
 }

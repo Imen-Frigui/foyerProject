@@ -49,6 +49,21 @@ public class UniversiteServiceImp implements IUniversite{
         return foyerRepository.findByUniversiteIsNull();
     }
 
+    @Override
+    public List<Universite> searchByName(String name) {
+        return universiteRepository.findByNomUniversiteContainingIgnoreCase(name);
+    }
+
+    @Override
+    public List<Universite> searchByAddress(String address) {
+        return universiteRepository.findByAdresseUniversiteContainingIgnoreCase(address);
+    }
+
+    @Override
+    public List<Universite> searchByFoyer(long idF) {
+        return universiteRepository.findByFoyer_IdFoyer(idF);
+    }
+
     public Universite addUniversityAndAssignToFoyer(Universite universite, Foyer foyer) {
         universite.setFoyer(foyer);
         return universiteRepository.save(universite);
