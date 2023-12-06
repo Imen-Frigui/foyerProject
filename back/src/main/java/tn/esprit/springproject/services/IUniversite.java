@@ -13,5 +13,5 @@ public interface IUniversite{
     public Universite findById(long idU);
     public void deleteUniversite(long idU);
     public Universite getByNomUniversite(String nomU);
-    public List<Foyer> findFoyersNotAssignedToUniversity();
+    public List<Foyer>find findFoyersNotAssignedToUniversity();
 }
