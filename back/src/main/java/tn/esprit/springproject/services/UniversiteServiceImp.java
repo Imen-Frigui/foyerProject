@@ -44,6 +44,11 @@ public class UniversiteServiceImp implements IUniversite{
         return null;
     }
 
+    @Override
+    public List<Foyer> findFoyersNotAssignedToUniversity() {
+        return foyerRepository.findByUniversiteIsNull();
+    }
+
     public Universite addUniversityAndAssignToFoyer(Universite universite, Foyer foyer) {
         universite.setFoyer(foyer);
         return universiteRepository.save(universite);

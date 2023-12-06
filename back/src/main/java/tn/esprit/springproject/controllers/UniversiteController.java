@@ -47,4 +47,10 @@ public class UniversiteController {
         Foyer foyer = foyerServiceImp.findById(foyerId);
         return universiteServiceImp.addUniversityAndAssignToFoyer(universite, foyer);
     }
+
+
+    @GetMapping("/not-assigned")
+    public List<Foyer> getFoyersNotAssignedToUniversity() {
+        return universiteServiceImp.findFoyersNotAssignedToUniversity();
+    }
 }
