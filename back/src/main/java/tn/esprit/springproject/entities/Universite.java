@@ -11,6 +11,8 @@ import lombok.ToString;
 import org.springframework.data.repository.CrudRepository;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -25,4 +27,7 @@ public class Universite implements Serializable {
     @JsonManagedReference
     @OneToOne
     private Foyer foyer;
+    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<UniversityEvent> universityEvents;
 }
