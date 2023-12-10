@@ -92,45 +92,32 @@
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <div class="row">
-    <div class="card p-5 offset-xl-3 offset-lg-2 col-xl-6 col-lg-8">
-      <form>
-        <div class="form-group">
-          <input
-            type="email"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-          />
+    <div class="card p-5 offset-1 col-lg-10">
+      <div class="row">
+        <div *ngIf="selected_universite != null" class="col-2">> {{ selected_universite.nomUniversite }} > {{ foyer.nomFoyer }} </div>
+        <div *ngIf="selected_bloc != null" class="col-2">> {{ selected_bloc.nomBloc }}</div>  
+        <div *ngIf="selected_chambre != null" class="col-2">> {{ selected_chambre.numeroChambre }}</div>  
+      </div>
+      <div class="row">
+        <div *ngFor="let uni of universites" class="col">
+          <button (click)="selectuni(uni)">{{ uni.nomUniversite }}</button>
+        </div>  
+      </div>
+      <div class="row">
+        <div *ngIf="foyer != null" class="col">
+          <button >{{ foyer.nomFoyer }}</button>
+        </div>  
+      </div>
+      <div class="row" *ngIf="foyer != null">
+        <div *ngFor="let bloc of foyer.blocList" class="col">
+          <button (click)="selectbloc(bloc)">{{ bloc.nomBloc }}</button>
         </div>
-        <div class="form-group">
-          <input
-            type="text"
-            placeholder="Regular"
-            class="form-control"
-            disabled=""
-          />
+      </div> 
+      <div class="row" *ngIf="blocs != null">
+        <div *ngFor="let chambre of selected_bloc.chamberList" class="col">
+          <button (click)="selectchambre(chambre)">{{ chambre.numeroChambre }}</button>
         </div>
-        <div class="form-group">
-          <div class="input-group mb-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text"
-                ><i class="ni ni-zoom-split-in"></i
-              ></span>
-            </div>
-            <input class="form-control" placeholder="Search" type="text" />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group mb-4">
-            <input class="form-control" placeholder="Birthday" type="text" />
-            <div class="input-group-append">
-              <span class="input-group-text"
-                ><i class="ni ni-zoom-split-in"></i
-              ></span>
-            </div>
-          </div>
-        </div>
-      </form>
+      </div>  
     </div>
   </div>
 </div>

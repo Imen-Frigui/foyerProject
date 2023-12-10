@@ -1,0 +1,143 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      ALL
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{ reservations.length }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div (click)="sort('all')"
+                      class="cursor-pointer icon icon-shape bg-danger text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-chart-bar"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Awaiting
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{ awaiting }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div (click)="sort('AWAITING')"
+                      class="cursor-pointer icon icon-shape bg-warning text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-chart-pie"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Confirmed
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{ confirmed }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div (click)="sort('CONFIRMED')"
+                      class="cursor-pointer icon icon-shape bg-yellow text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Rejected
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{ rejected }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div (click)="sort('REJECTED')"
+                      class="cursor-pointer icon icon-shape bg-info text-white rounded-circle shadow"
+                    >
+                      <i class="fas fa-percent"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="table-responsive card">
+            <table class="table align-middle mb-0 bg-white">
+              <thead class="bg-light">
+                <tr>
+                  <th>Name Prenom</th>
+                  <th>Cin</th>
+                  <th>Status</th>
+                  <th>Annee Universitaire</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reservation of displayedReservations">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{ reservation.etudiantList[0].nomEt }} {{ reservation.etudiantList[0].prenomET }}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">{{ reservation.etudiantList[0].cin }}</p>
+                  </td>
+                  <td>
+                    <span *ngIf="reservation.state==='CONFIRMED'" class="badge badge-success rounded-pill d-inline">Confirmed</span>
+                    <span *ngIf="reservation.state==='AWAITING'" class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+                    <span *ngIf="reservation.state==='REJECTED'" class="badge badge-danger rounded-pill d-inline">Rejected</span>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-1">{{ reservation.anneUniversitaire }}</p>
+                  </td>
+                  <td>
+                    <button type="button" routerLink="/reservation/user/{{idUser}}/{{reservation.idReservation}}" class="fw-normal mb-1 btn btn-link btn-sm btn-rounded">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

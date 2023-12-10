@@ -43,8 +43,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col text-center">
-                    <div *ngIf="reservation.state==='CONFIRMED'" type="button" class="btn btn-success btn-block">{{ reservation.state }}</div>
-                    <div *ngIf="reservation.state==='REJECTED'" type="button" class="btn btn-danger btn-block">{{ reservation.state }}</div>
+                    <div *ngIf="reservation.state==='CONFIRMED'" type="button" class="btn btn-success btn-block" style="pointer-events: none;">{{ reservation.state }}</div>
+                    <div *ngIf="reservation.state==='REJECTED'" type="button" class="btn btn-danger btn-block" style="pointer-events: none;">{{ reservation.state }}</div>
                 </div>
               </div>
             </div>

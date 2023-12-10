@@ -41,4 +41,8 @@ public class FoyerController {
     public Foyer getByNom(@PathVariable String nomf){
         return foyerServiceImp.getByNomFoyer(nomf);
     }
+    @GetMapping("/getbyUniversite/{idUniversite}")
+    public Foyer getbyUniversite(@PathVariable long idUniversite){
+        return foyerServiceImp.getbyUniversite(idUniversite);
+    }
 }

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 import { ReservationNewComponent } from './reservation-new/reservation-new.component';
+import { ReservationsUserComponent } from './reservations-user/reservations-user.component';
+import { ReservationsDetailUserComponent } from './reservations-detail-user/reservations-detail-user.component';
 
 const routes: Routes = [
   {
@@ -10,12 +12,20 @@ const routes: Routes = [
     component: ReservationsComponent
   },
   {
-    path: "new/:id",
+    path: "new",
     component: ReservationNewComponent
   },
   {
-    path: ":id",
+    path: ":idRes",
     component: ReservationDetailsComponent
+  },
+  {
+    path: "user/:idUser",
+    component: ReservationsUserComponent
+  },
+  {
+    path: "user/:idUser/:idRes",
+    component: ReservationsDetailUserComponent
   },
 ];
 
