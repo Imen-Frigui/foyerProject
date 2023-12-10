@@ -68,4 +68,11 @@ public class UniversiteController {
     public List<Universite> searchByFoyer(@RequestParam long searchTerm) {
         return universiteServiceImp.searchByFoyer(searchTerm);
     }
+
+    @GetMapping("/{universityId}/average-bloc-capacity")
+    public Double calculateAverageBlocCapacityForUniversity( @PathVariable long universityId) {
+        double averageCapacity;
+        averageCapacity = universiteServiceImp.calculateAverageBlocCapacityForUniversity(universityId);
+        return averageCapacity;
+    }
 }

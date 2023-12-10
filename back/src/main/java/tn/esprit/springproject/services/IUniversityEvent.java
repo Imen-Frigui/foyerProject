@@ -18,4 +18,6 @@ public interface IUniversityEvent {
     public UniversityEvent createEvent(UniversityEvent event) ;
 
     public void deleteEvent(long eventId) ;
+    UniversityEvent createEventAndAssignToUniversity(UniversityEvent event, long universityId);
+
 }
