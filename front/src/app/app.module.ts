@@ -10,6 +10,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UniversiteComponent } from './universite/universite.component';
 import { UniversityTableComponent } from './university-table/university-table.component';
+import { EditUniversityComponent } from './edit-university/edit-university.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddUniversityFormComponent } from './add-university-form/add-university-form.component';
+
 
 
 @NgModule({
@@ -21,11 +25,15 @@ import { UniversityTableComponent } from './university-table/university-table.co
     HeaderComponent,
     UniversiteComponent,
     UniversityTableComponent,
+    EditUniversityComponent,
+    AddUniversityFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

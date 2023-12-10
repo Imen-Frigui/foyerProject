@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UniversiteService } from '../services/universite.service';
 import { Universite } from '../models/universite.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-university-table',
@@ -10,7 +11,7 @@ import { Universite } from '../models/universite.model';
 export class UniversityTableComponent {
   universities: Universite[] = [];
 
-  constructor(private universiteService: UniversiteService) { }
+  constructor(private universiteService: UniversiteService, private router: Router) {  }
 
   ngOnInit(): void {
     this.loadUniversities();
@@ -20,6 +21,7 @@ export class UniversityTableComponent {
     this.universiteService.getAllUniversities().subscribe(
       data => {
         this.universities = data;
+        console.log('Universities:', this.universities);
       },
       error => {
         console.log(error);
@@ -32,5 +34,10 @@ export class UniversityTableComponent {
       this.loadUniversities();
     });
   }
-
+  editUniversity(id: number): void {
+    this.router.navigate(['admin/edit-university', id]);
+  }
+  addNewUniversity(): void {
+    this.router.navigate(['/admin/add-university']);
+  }
 }
