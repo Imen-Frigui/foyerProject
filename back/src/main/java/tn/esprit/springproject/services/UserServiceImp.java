@@ -31,8 +31,21 @@ public class UserServiceImp implements IUser {
     }
 
     @Override
-    public User updateUser(User E) {
-        return userRepository.save(E);
+    public User updateUser(User u) {
+        User trueUser = userRepository.findById(u.getIdUser()).orElse(null);
+        if (!trueUser.getNom().equals(u.getNom()))
+            trueUser.setNom(u.getNom());
+        if (!trueUser.getPrenom().equals(u.getPrenom()))
+            trueUser.setPrenom(u.getPrenom());
+        if (!trueUser.getDateNaissance().equals(u.getDateNaissance()))
+            trueUser.setDateNaissance(u.getDateNaissance());
+        if (!trueUser.getEcole().equals(u.getEcole()))
+            trueUser.setEcole(u.getEcole());
+        if (!u.getMotDePasse().equals(""))
+            trueUser.setMotDePasse(passwordEncoder.encode(u.getMotDePasse()));
+        if (!trueUser.getEmail().equals(u.getEmail()))
+            trueUser.setEmail(u.getEmail());
+        return userRepository.save(u);
     }
 
     @Override
