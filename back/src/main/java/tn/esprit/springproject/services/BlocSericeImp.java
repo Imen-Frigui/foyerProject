@@ -20,16 +20,32 @@ public class BlocSericeImp implements IBloc {
 
     public BolcRepository bolcRepository;
     public ChambreRepository chambreRepository;
+
     @Override
-    public Bloc addBloc(Bloc B) { return bolcRepository.save(B); }
+    public Bloc addBloc(Bloc B) {
+        return bolcRepository.save(B);
+    }
+
     @Override
-    public Bloc updateBloc(Bloc B) { return bolcRepository.save(B); }
+    public Bloc updateBloc(Bloc B) {
+        return bolcRepository.save(B);
+    }
+
     @Override
-    public List<Bloc> getAllBloc() { return bolcRepository.findAll(); }
+    public List<Bloc> getAllBloc() {
+        return bolcRepository.findAll();
+    }
+
     @Override
-    public Bloc getById(long id) { return bolcRepository.findById(id).orElse(null); }
+    public Bloc getById(long id) {
+        return bolcRepository.findById(id).orElse(null);
+    }
+
     @Override
-    public void deleteBloc(long id) { bolcRepository.deleteById(id); }
+    public void deleteBloc(long id) {
+        bolcRepository.deleteById(id);
+    }
+
     @Override
     public List<Bloc> findByChamberListTypeC(TypeChambre type) {
         return bolcRepository.findByChamberListTypeC(type);
@@ -38,11 +54,31 @@ public class BlocSericeImp implements IBloc {
     @Override
     public Bloc getBlocByChambreId(long chambreId) {
         Chamber chambre = chambreRepository.findById(chambreId).orElse(null);
-        if (chambre!=null){
+        if (chambre != null) {
             return chambre.getBloc();
-        }else {
+        } else {
             return null;
         }
     }
 
+    public int getBlockCapacityByChamber(long id) {
+        Bloc bloc = bolcRepository.findById(id).orElse(null);
+
+        List<Chamber> chambers = bloc.getChamberList();
+        int capacity = 0;
+        for (Chamber chamber : chambers) {
+            if (chamber.getTypeC().toString().equals("SIMPLE")) {
+                capacity += 1;
+            } else if (chamber.getTypeC().toString().equals("DOUBLE")) {
+                capacity += 2;
+            } else {
+                capacity += 3;
+            }
+        }
+        return capacity;
+    }
+    public int getBlocMaxCapacity(long id) {
+        Bloc bloc = bolcRepository.findById(id).orElse(null);
+     return (int) bloc.getCapaciteBloc();
+}
 }

@@ -16,4 +16,6 @@ public interface IBloc {
     public void deleteBloc(long id);
     public List<Bloc> findByChamberListTypeC(TypeChambre type);
     public Bloc getBlocByChambreId(long chambreId);
+public int getBlockCapacityByChamber(long id);
+
 }

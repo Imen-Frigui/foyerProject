@@ -21,32 +21,39 @@ import java.util.Set;
 public class BlocController {
 
     public BlocSericeImp blocSericeImp;
+
     @PostMapping("/add")
-    public Bloc addBloc(@RequestBody Bloc b){
+    public Bloc addBloc(@RequestBody Bloc b) {
         return blocSericeImp.addBloc(b);
     }
+
     @PutMapping("/edit")
-    public Bloc updateBloc(@RequestBody Bloc b){
+    public Bloc updateBloc(@RequestBody Bloc b) {
         return blocSericeImp.updateBloc(b);
     }
+
     @GetMapping("/get")
-    public List<Bloc> findAllBloc(){
+    public List<Bloc> findAllBloc() {
         return blocSericeImp.getAllBloc();
     }
+
     @GetMapping("/get/{IdB}")
-    public Bloc findBlocById(@PathVariable long IdB){
+    public Bloc findBlocById(@PathVariable long IdB) {
         return blocSericeImp.getById(IdB);
     }
+
     @DeleteMapping("/delete/{IdB}")
-    public void deleteFoyerById(@PathVariable long IdB){
+    public void deleteFoyerById(@PathVariable long IdB) {
         blocSericeImp.deleteBloc(IdB);
     }
+
     @GetMapping("/getBlocByTypeC/{type}")
-    public List<Bloc> findBlocByTypeC(@PathVariable TypeChambre type){
+    public List<Bloc> findBlocByTypeC(@PathVariable TypeChambre type) {
         return blocSericeImp.findByChamberListTypeC(type);
     }
+
     @GetMapping("/getBlocByChambre/{chambreId}")
-    public Bloc getBlocByChambre(@PathVariable long chambreId){
+    public Bloc getBlocByChambre(@PathVariable long chambreId) {
         return blocSericeImp.getBlocByChambreId(chambreId);
     }
 

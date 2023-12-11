@@ -12,4 +12,5 @@ public interface IChambre {
     public Chamber getChamberById(long id);
     public void deleteChamber(long id);
     public List<Chamber> findChambresByBloc(Bloc B);
+    public Chamber CreateChamberAndAddToBloc(Chamber C, long BlocId);
 }

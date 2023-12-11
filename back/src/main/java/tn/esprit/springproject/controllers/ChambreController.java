@@ -43,4 +43,27 @@ public class ChambreController {
         Bloc bloc = blocSericeImp.getById(blocId);
         return chambreServiceImp.findChambresByBloc(bloc);
     }
+
+    @PostMapping("/bulk-create")
+    public int bulkCreateChambers(@RequestBody List<Chamber> chambers) {
+     return    chambreServiceImp.bulkCreateChambers(chambers);
+    }
+
+        @PostMapping("/CreateRoom/{IdBloc}")
+        public Chamber createRoombyBloc(@RequestBody  Chamber chamber , @PathVariable  long IdBloc) {
+            return    chambreServiceImp.CreateChamberAndAddToBloc(chamber,IdBloc);
+        }
+
+
+    @GetMapping("/getBlocCapacityActive/{id}")
+    public int getBlocCapacityActive(@PathVariable long id){
+        return blocSericeImp.getBlockCapacityByChamber(id);
+    }
+        @GetMapping("/getBlocMaxCapacity/{id}")
+    public int getBlocMaxCapacity(@PathVariable long id){
+        return blocSericeImp.getBlocMaxCapacity(id);
+    }
+
+
 }
+
