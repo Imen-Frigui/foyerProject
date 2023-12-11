@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/chambre")
 @Tag(name = "chambre API")
-public class ChambreController {
+public class    ChambreController {
     public ChambreServiceImp chambreServiceImp;
     public BlocSericeImp blocSericeImp;
 
