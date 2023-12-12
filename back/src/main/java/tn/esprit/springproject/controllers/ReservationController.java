@@ -3,8 +3,12 @@ package tn.esprit.springproject.controllers;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.springproject.entities.Chamber;
+import tn.esprit.springproject.entities.StateReservation;
 import tn.esprit.springproject.entities.User;
 import tn.esprit.springproject.entities.Reservation;
+import tn.esprit.springproject.services.IReservation;
+import tn.esprit.springproject.services.IUser;
 import tn.esprit.springproject.services.UserServiceImp;
 import tn.esprit.springproject.services.ReservationServiceImp;
 
