@@ -7,7 +7,7 @@ import tn.esprit.springproject.entities.Reservation;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    List<Reservation> findReservationsByUserListContains(User user);
+    List<Reservation> findReservationsByUserListContains(User etudiant);
     List<Reservation> findReservationsByUserListNomStartingWith(String prefix);
 
 }

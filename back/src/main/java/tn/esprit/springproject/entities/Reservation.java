@@ -19,9 +19,9 @@ public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idReservation;
-
-    @Temporal(TemporalType.DATE)
-    private Date anneUniversitaire;
+    private String anneUniversitaire;
+    @Enumerated(EnumType.STRING)
+    private StateReservation state;
     private boolean estValide;
     @ManyToMany()
     private List<User> userList;

@@ -15,41 +15,69 @@ import java.util.List;
 @RequestMapping("/reservation")
 @Tag(name = "reservation API")
 public class ReservationController {
-    public ReservationServiceImp reservationServiceImp;
-    public UserServiceImp etudiantServiceImp;
+    public IReservation iReservation;
+    public IUser iUser;
 
     @PostMapping("/add")
-    public Reservation addReservation(@RequestBody Reservation r){ return reservationServiceImp.addReservation(r); }
+    public Reservation addReservation(@RequestBody Reservation r) {
+        return iReservation.addReservation(r);
+    }
 
     @PutMapping("/edit")
-    public Reservation updateReservation(@RequestBody Reservation r){ return reservationServiceImp.updateReservation(r); }
+    public Reservation updateReservation(@RequestBody Reservation r) {
+        return iReservation.updateReservation(r);
+    }
 
     @GetMapping("/get")
-    public List<Reservation> findAllReservation(){
-        return reservationServiceImp.getAllReservation();
+    public List<Reservation> findAllReservation() {
+        return iReservation.getAllReservation();
     }
 
     @GetMapping("/get/{IdR}")
-    public Reservation findReservationById(@PathVariable long IdR){ return  reservationServiceImp.getReservationrById(IdR); }
+    public Reservation findReservationById(@PathVariable long IdR) {
+        return iReservation.getReservationrById(IdR);
+    }
 
     @DeleteMapping("/delete/{IdR}")
-    public void deleteReservationById(@PathVariable long IdR){
-        reservationServiceImp.deleteReservation(IdR);
+    public void deleteReservationById(@PathVariable long IdR) {
+        iReservation.deleteReservation(IdR);
     }
+
     @GetMapping("/getReservationByetudiant/{id}")
-    public List<Reservation> findReservationBy(@PathVariable long id){
-        User user = etudiantServiceImp.getById(id);
-        return reservationServiceImp.findReservationsByEtudiantListContains(user);
+    public List<Reservation> findReservationByEtudiant(@PathVariable long id) {
+        User etudiant = iUser.getById(id);
+        return iReservation.findReservationsByEtudiantListContains(etudiant);
 
     }
-    @GetMapping("/getReservationByEtudiantNom/{nom}")
-    public List<Reservation> findReservationByEtudiantNom(@PathVariable String nom){
-        User user = etudiantServiceImp.findUserByNom(nom);
-        return reservationServiceImp.findReservationsByEtudiantListContains(user);
 
-    }
     @GetMapping("/getReservationByEtudiantAB")
-    public List<Reservation> findReservationByEtudiantNom(){
-        return reservationServiceImp.findReservationsByEtudiantNomContainsAB();
+    public List<Reservation> findReservationByEtudiantNom() {
+        return iReservation.findReservationsByEtudiantNomContainsAB();
     }
+
+    @PostMapping("/addReservationAndAssignToChambre/{idChambre}")
+    public Reservation addReservationAndAssignToChambre(@RequestBody Reservation reservation, @PathVariable long idChambre) {
+        return iReservation.addReservationAndAssignToChambre(reservation, idChambre);
+    }
+
+    @GetMapping("/findByReservation/{idReservation}")
+    public Chamber findByReservation(@PathVariable long idReservation) {
+        return iReservation.findByReservation(idReservation);
+    }
+
+    @PutMapping("/updateState/{stateReservation}")
+    public Reservation updateState(@RequestBody Reservation reservation, @PathVariable StateReservation stateReservation) {
+        return iReservation.updateState(reservation, stateReservation);
+    }
+
+    @GetMapping("findNumberEtudiantInCHambre/{idReservation}")
+    public int findNumberEtudiantInCHambreByRes(@PathVariable long idReservation) {
+        return iReservation.findNumberEtudiantInCHambreByRes(idReservation);
+    }
+
+    @GetMapping("findNumberEtudiantInCHambreByChambre/{idChambre}")
+    public int findNumberEtudiantInCHambreByChambre(@PathVariable long idChambre) {
+        return iReservation.findNumberEtudiantInCHambreByChambre(idChambre);
+    }
+
 }

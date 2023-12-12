@@ -1,5 +1,6 @@
 package tn.esprit.springproject.services;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import tn.esprit.springproject.entities.Foyer;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IFoyer {
     public Foyer findById(long idF);
     public void deleteFoyer(long idF);
     public Foyer getByNomFoyer(String nomF);
+    public Foyer getbyUniversite(long idUniversite);
 }
