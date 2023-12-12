@@ -109,4 +109,9 @@ public class FoyerController {
         return foyerServiceImp.addRatingForFoyer(r, idF);
     }
 
+    @GetMapping("/countAll")
+    int countAll() {
+        return foyerServiceImp.countAll();
+    }
+
 }

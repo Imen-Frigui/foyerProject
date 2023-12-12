@@ -32,6 +32,10 @@ public interface FoyerRepository extends JpaRepository<Foyer, Long> {
     List<Foyer> getFoyerWithMostReservations();
 
 
+    @Query("select count(f) from Foyer f")
+    int countAll();
+
+
 
 
 

@@ -125,4 +125,9 @@ public class FoyerServiceImp implements IFoyer {
     }
 
 
+   public int countAll(){
+        return foyerRepository.countAll();
+    }
+
+
 }
