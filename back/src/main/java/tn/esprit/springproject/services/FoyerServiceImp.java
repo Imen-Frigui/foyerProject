@@ -10,6 +10,7 @@ import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.entities.Rate;
 import tn.esprit.springproject.repositories.FoyerRepository;
 import tn.esprit.springproject.repositories.RateRepository;
+import tn.esprit.springproject.repositories.UniversiteRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class FoyerServiceImp implements IFoyer {
     @Autowired
     private RateRepository rateRepository;
 
+    private UniversiteRepository universiteRepository;
     @Override
     public Foyer addFoyer(Foyer f) {
         return foyerRepository.save(f);
@@ -128,6 +130,12 @@ public class FoyerServiceImp implements IFoyer {
    public int countAll(){
         return foyerRepository.countAll();
     }
+    @Override
+    public Foyer getbyUniversite(long idUniversite) {
+        return foyerRepository.findByUniversite(universiteRepository.findById(idUniversite).get());
+    }
 
 
 }
+
+

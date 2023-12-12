@@ -2,17 +2,12 @@ package tn.esprit.springproject.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Bloc;
-import tn.esprit.springproject.entities.Chamber;
-import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.entities.TypeChambre;
 import tn.esprit.springproject.services.BlocSericeImp;
-import tn.esprit.springproject.services.EtudiantServiceImp;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @AllArgsConstructor

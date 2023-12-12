@@ -1,11 +1,12 @@
 package tn.esprit.springproject.controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.springproject.entities.Etudiant;
-import tn.esprit.springproject.entities.Foyer;
-import tn.esprit.springproject.services.EtudiantServiceImp;
+import tn.esprit.springproject.entities.User;
+import tn.esprit.springproject.services.UserServiceImp;
+import tn.esprit.springproject.services.IUser;
 
 import java.util.List;
 
@@ -14,39 +15,41 @@ import java.util.List;
 @RequestMapping("/etudiant")
 @Tag(name = "etudiant API")
 public class EtudiantController {
-    public EtudiantServiceImp etudiantServiceImp;
+    public IUser iUser;
+    public UserServiceImp etudiantServiceImp;
 
-    @PostMapping("/addEd")
-    public Etudiant addEtudiant(@RequestBody Etudiant e){
-        return etudiantServiceImp.addEtudiant(e);
+
+    @PostMapping("/addEt")
+    public User addEtudiant(@RequestBody User e){
+        return iUser.addUser(e);
     }
 
-    @PutMapping("/editEd/{id}")
-    public Etudiant updateEtudiant(@RequestBody Etudiant e, @PathVariable long id){
-        Etudiant etudiant = etudiantServiceImp.getById(id);
-        System.out.println(etudiant.toString());
-        etudiant.setCin(etudiant.getCin());
-        etudiant.setNomEt(etudiant.getNomEt());
-        etudiant.setPrenomET(etudiant.getPrenomET());
-        etudiant.setEcole(etudiant.getEcole());
-        etudiant.setDateNaissance(etudiant.getDateNaissance());
-        etudiant.setReservationList(etudiant.getReservationList());
-
-        return etudiant;
+    @PutMapping("/editEt")
+    public User updateUser(@RequestBody User e){
+        return iUser.updateUser(e);
     }
 
-    @GetMapping("/getEd")
-    public List<Etudiant> findAllEtudaint(){
-        return etudiantServiceImp.getAllEtudiants();
+    @GetMapping("/getEt")
+    public List<User> findAllUsers(){
+        return iUser.getAllUsers();
     }
 
-    @GetMapping("/getEd/{IdE}")
-    public Etudiant findEtudiantById(@PathVariable long IdE){
-        return  etudiantServiceImp.getById(IdE);
+    @GetMapping("/getEt/{IdE}")
+    public User findUserById(@PathVariable long IdE){
+        return  iUser.getById(IdE);
     }
 
-    @DeleteMapping("/delete/{IdE}")
-    public void deleteEtudiantById(@PathVariable long IdE){
-        etudiantServiceImp.deleteEtudiant(IdE);
+    @DeleteMapping("/deleteEt/{IdE}")
+    public void deleteUserById(@PathVariable long IdE){
+        iUser.deleteUser(IdE);
+    }
+
+    @GetMapping("/etByValidReservation")
+    public List<User> findByReservationList_EstValideTrue(){
+        return  iUser.findByReservationList_EstValideTrue();
+    }
+    @GetMapping("/etByUniversity/{name}")
+    public List<User> findAllByUniversity(@PathVariable String name){
+        return iUser.findAllByUniversity(name);
     }
 }

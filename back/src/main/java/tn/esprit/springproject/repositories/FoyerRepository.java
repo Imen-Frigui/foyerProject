@@ -8,6 +8,7 @@ import tn.esprit.springproject.entities.Rate;
 
 import java.util.List;
 import java.util.Set;
+import tn.esprit.springproject.entities.Universite;
 
 public interface FoyerRepository extends JpaRepository<Foyer, Long> {
     public Foyer findByNomFoyer(String nomFoyer);
@@ -38,5 +39,7 @@ public interface FoyerRepository extends JpaRepository<Foyer, Long> {
 
 
 
+
+    public Foyer findByUniversite(Universite universite);
 
 }

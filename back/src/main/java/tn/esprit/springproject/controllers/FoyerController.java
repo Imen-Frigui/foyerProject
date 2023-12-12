@@ -116,4 +116,8 @@ public class FoyerController {
         return foyerServiceImp.countAll();
     }
 
+    @GetMapping("/getbyUniversite/{idUniversite}")
+    public Foyer getbyUniversite(@PathVariable long idUniversite){
+        return foyerServiceImp.getbyUniversite(idUniversite);
+    }
 }
