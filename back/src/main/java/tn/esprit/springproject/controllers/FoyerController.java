@@ -14,6 +14,7 @@ import tn.esprit.springproject.entities.Foyer;
 import tn.esprit.springproject.entities.Rate;
 import tn.esprit.springproject.services.FoyerServiceImp;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -83,10 +84,10 @@ public class FoyerController {
         return ResponseEntity.ok(foyers);
     }
 
-    @Scheduled(cron = "* * 11 * * *")
-    public void generateYearlyReportForFoyers() {
-        foyerServiceImp.generateYearlyReportForFoyers();
-    }
+//    @Scheduled(cron = "* * 11 * * *")
+//    public void generateYearlyReportForFoyers() {
+//        foyerServiceImp.generateYearlyReportForFoyers();
+//    }
 
     @GetMapping("/countByRegion/{region}")
     public int countFoyersByRegion(@PathVariable String region) {
@@ -106,6 +107,7 @@ public class FoyerController {
 
     @PostMapping("/addRatingForFoyer/{idF}")
     public Rate addRatingForFoyer(@RequestBody Rate r, @PathVariable Long idF) {
+        r.setDate(new Date());
         return foyerServiceImp.addRatingForFoyer(r, idF);
     }
 
